@@ -47,4 +47,12 @@ Rama 'TP-1' configurada para hacer seguimiento a la rama remota 'TP-1' de 'origi
 
 Ahora nos dirigimos a nuestro repositorio remoto en github, en donde podemos observar nuestro *pull request*.
 
-![](/home/juan/UCC/ing-sw-3/pullreq-1.jpeg)
+![](screenshots/pullreq-1.jpeg)
+
+Podemos revisar que cambios propone este pull request, asi como tambien el historial de commits del mismo.
+
+![](screenshots/pullreq-2.jpeg)
+
+Completamos el proceso de revision y realizamos el merge al branch master.
+
+![](screenshots/pullreq-3.jpeg)
