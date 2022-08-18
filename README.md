@@ -85,4 +85,14 @@ La herramienta de comparacion nos muestra el error.
 
 ![](screenshots/pullreq-5.jpeg)
 
-#ERROR
+## Comparacion entre **LOCAL**, **BASE** y **REMOTE**
+
+Git realiza lo que llamamos una "fusion de tres vias" cuando requerimos un git merge.
+
+*LOCAL* refiere a los cambios que realizamos nosotros (repo local)
+
+*REMOTE* refiere a los cambios que han sido subidos al repositorio remoto, en donde residen generalmente los cambios hechos por otros usuarios
+
+*BASE* es la version de los archivos en donde ambas versiones tienen el ancestro comun mas cercano. A partir de este se analizan ambos cambios producidos por las otras dos versiones, y luego se obtiene el resultado.
+
+![](screenshots/base-local-remote.png)
