@@ -59,5 +59,29 @@ Completamos el proceso de revision y realizamos el merge al branch master.
 
 ## Realizar merge en un codigo con conflictos
 
-Clonamos el repositorio creado, modificamos el archivo README.md del original y subimos el cambio a master. Cambiamos luego el segundo clon e intentamos subir el cambio, y obtenemos lo siguiente.
+Clonamos el repositorio creado, modificamos el archivo README.md del original y subimos el cambio a master. 
+
+```
+juan@juan-escritorio:~/UCC/ing-sw-3$ git commit -m "Cambios del clon original"
+[main d369ee3] Cambios del clon original
+ 1 file changed, 5 insertions(+)
+juan@juan-escritorio:~/UCC/ing-sw-3$ git push
+Enumerando objetos: 5, listo.
+Contando objetos: 100% (5/5), listo.
+Compresión delta usando hasta 8 hilos
+Comprimiendo objetos: 100% (3/3), listo.
+Escribiendo objetos: 100% (3/3), 519 bytes | 519.00 KiB/s, listo.
+Total 3 (delta 1), reusados 0 (delta 0), pack-reusados 0
+remote: Resolving deltas: 100% (1/1), completed with 1 local object.
+To https://github.com/ju4ncito/ing-sw-3-villarreal.git
+   9a80326..d369ee3  main -> main
+```
+
+Cambiamos luego el segundo clon e intentamos subir el cambio, y obtenemos lo siguiente.
+
+![](screenshots/pullreq-4.jpeg)
+
+La herramienta de comparacion nos muestra el error.
+
+![](screenshots/pullreq-5.jpeg)
 
