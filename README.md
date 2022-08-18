@@ -96,3 +96,7 @@ Git realiza lo que llamamos una "fusion de tres vias" cuando requerimos un git m
 *BASE* es la version de los archivos en donde ambas versiones tienen el ancestro comun mas cercano. A partir de este se analizan ambos cambios producidos por las otras dos versiones, y luego se obtiene el resultado.
 
 ![](screenshots/base-local-remote.png)
+
+### Ejercicios de GIT
+
+![](screenshots/ejercicios.jpeg)
