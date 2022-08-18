@@ -56,3 +56,8 @@ Podemos revisar que cambios propone este pull request, asi como tambien el histo
 Completamos el proceso de revision y realizamos el merge al branch master.
 
 ![](screenshots/pullreq-3.jpeg)
+
+## Realizar merge en un codigo con conflictos
+
+Clonamos el repositorio creado, modificamos el archivo README.md del original y subimos el cambio a master. Cambiamos luego el segundo clon e intentamos subir el cambio, y obtenemos lo siguiente.
+
