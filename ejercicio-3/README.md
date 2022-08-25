@@ -128,3 +128,36 @@ Abrimos dos navegadores en localhost:5000 y vemos el resultado en localhost:5001
 
 Para saber como se logro todo esto, observamos en primer lugar la arquitectura del sistema distribuido:
 
+![](screenshots/architecture.png)
+
+En el README.md del proyecto vemos parte por parte que se utilizo
+
+* A front-end web app in [Python](/vote) or [ASP.NET Core](/vote/dotnet) which lets you vote between two options
+* A [Redis](https://hub.docker.com/_/redis/) or [NATS](https://hub.docker.com/_/nats/) queue which collects new votes
+* A [.NET Core](/worker/src/Worker), [Java](/worker/src/main) or [.NET Core 2.1](/worker/dotnet) worker which consumes votes and stores them in…
+* A [Postgres](https://hub.docker.com/_/postgres/) or [TiDB](https://hub.docker.com/r/dockersamples/tidb/tags/) database backed by a Docker volume
+* A [Node.js](/result) or [ASP.NET Core SignalR](/result/dotnet) webapp which shows the results of the voting in real time
+
+Analizando el docker-compose.yml del repositorio, vemos que:
+
+- La aplicacion para votar se encuentra conectada a las redes front y back, depende del contenedor _redis_ y su buen funcionamiento y escucha el puerto 5000
+
+- La aplicacion para guardar los resultados se encuentra conectada a las redes front y back, depende del contenedor _db_ y su buen funcionamiento y escucha el puerto 5001
+
+- La aplicacion ```worker``` se encuentra conectada unicamente a la red back, y depende tanto de _redis_ como _db_
+
+- La aplicacion ```redis``` se encuentra conectada unicamente a la red back, se indica su imagen y sus healthckecks y escucha el puerto 6379
+
+- La aplicacion ```db``` se encuentra conectada unicamente a la red back, se indica su imagen (postgres) y sus healthckecks.
+
+Por lo tanto, tenemos 1 db y 2 redes.
+
+### Analisis detallado
+
+Modificamos el ```javaworker``` y los puertos para poder utilizar el dbeaver.
+
+- db PostgreSQL
+
+![](screenshots/postgre-1.png)
+
+- 
