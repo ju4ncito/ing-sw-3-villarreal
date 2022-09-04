@@ -15,3 +15,6 @@ docker-compose -f deploy/docker-compose/docker-compose.yml up -d
 
 ![](screenshots/tp4-1.png)
 
+Creamos un usuario, agregamos datos de compra y simulamos la compra de un articulo
+
+![](screenshots/tp4-2.png)
