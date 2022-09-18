@@ -58,13 +58,13 @@ Un **repositorio** en MAVEN contiene artefactos de compilación y dependencias d
 
 Existen 2 tipos de repositorios:
 
-- **Locales** : el repositorio local es un directorio en la computadora donde se ejecuta Maven. Almacena en caché las descargas remotas y contiene artefactos de compilación temporales que aún no ha publicado.
+- **Locales** :     el repositorio local es un directorio en la computadora donde se ejecuta Maven. Almacena en caché las descargas remotas y contiene artefactos de compilación temporales que aún no ha publicado.
 
-- **Remotos** : Los repositorios remotos se refieren a cualquier otro tipo de repositorio, al que se accede mediante una variedad de protocolos como ```file://``` y ```https://```. Pueden ser un repositorio verdaderamente remoto configurado por un tercero para proporcionar sus artefactos para descargar (por ejemplo, repo.maven.apache.org) o pueden ser repositorios internos configurados en un servidor de archivos o HTTP dentro de su empresa.
+- **Remotos** :     Los repositorios remotos se refieren a cualquier otro tipo de repositorio, al que se accede mediante una variedad de protocolos como ```file://``` y ```https://```. Pueden ser un repositorio verdaderamente remoto configurado por un tercero para proporcionar sus artefactos para descargar (por ejemplo, repo.maven.apache.org) o pueden ser repositorios internos configurados en un servidor de archivos o HTTP dentro de su empresa.
 
 ### Ciclos de vida de BUILD
 
-Hay tres ciclos de vida de compilación integrados: ```default```, ``clean`` y ``site``. El ciclo de vida DEFAULT maneja la implementación de un proyecto, el ciclo de vida CLEAN maneja la limpieza del proyecto, mientras que el ciclo de vida SITE maneja la creación del sitio web de su proyecto.
+Hay tres ciclos de vida de compilación integrados:    ```default```, ``clean`` y ``site``. El ciclo de vida DEFAULT maneja la implementación de un proyecto, el ciclo de vida CLEAN maneja la limpieza del proyecto, mientras que el ciclo de vida SITE maneja la creación del sitio web de su proyecto.
 
 ### Ejemplo de construccion de MVN 
 
@@ -100,20 +100,20 @@ Se instalan archivos jar desde el repositorio central y se crea el proyecto MAVE
  T E S T S
 -------------------------------------------------------
 Running ar.edu.ucc.AppTest
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.006 sec
+Tests run:    1, Failures:    0, Errors:   0, Skipped:    0, Time elapsed:    0.006 sec
 
 Results :
 
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0
+Tests run:    1, Failures:    0, Errors:   0, Skipped:    0
 
 [INFO] 
 [INFO] --- maven-jar-plugin:2.4:jar (default-jar) @ ejemplo ---
-[INFO] Building jar: /home/juan/ucc/ing-sw-3-villarreal/ejercicio-5/MAVEN/maven-cont/ejemplo/target/ejemplo-1.0-SNAPSHOT.jar
+[INFO] Building jar:    /home/juan/ucc/ing-sw-3-villarreal/ejercicio-5/MAVEN/maven-cont/ejemplo/target/ejemplo-1.0-SNAPSHOT.jar
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  4.076 s
-[INFO] Finished at: 2022-09-08T16:04:21-03:00
+[INFO] Total time:     4.076 s
+[INFO] Finished at:     2022-09-08T16:04:21-03:00
 [INFO] ------------------------------------------------------------------------
 ```
 ```
@@ -129,13 +129,13 @@ Una vez creado nuestro proyecto, cuando compilamos obtenemos el siguiente error:
 ```
 [INFO] BUILD FAILURE
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  0.835 s
-[INFO] Finished at: 2022-09-08T16:20:59-03:00
+[INFO] Total time:     0.835 s
+[INFO] Finished at:     2022-09-08T16:20:59-03:00
 [INFO] ------------------------------------------------------------------------
-[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project ejemplo-uber-jar: Compilation failure: Compilation failure: 
+[ERROR] Failed to execute goal org.apache.maven.plugins:maven-compiler-plugin:3.1:compile (default-compile) on project ejemplo-uber-jar:    Compilation failure:    Compilation failure:   
 [ERROR] Source option 5 is no longer supported. Use 6 or later.
 [ERROR] Target option 1.5 is no longer supported. Use 1.6 or later.
-[ERROR] -> [Help 1]
+[ERROR]:    [Help 1]
 ```
 
 Por lo tanto, debemos agregar la dependencia necesaria
@@ -152,16 +152,16 @@ Volvemos a ejecutar nuestro jar, pero obtenemos lo siguiente
 
 ```
 juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5/MAVEN/maven-dependencias/ejemplo-uber-jar$ java -cp target/ejemplo-uber-jar-1.0-SNAPSHOT.jar ar.edu.ucc.App
-Exception in thread "main" java.lang.NoClassDefFoundError: org/slf4j/LoggerFactory
+Exception in thread "main" java.lang.NoClassDefFoundError:    org/slf4j/LoggerFactory
         at ar.edu.ucc.App.main(App.java:14)
-Caused by: java.lang.ClassNotFoundException: org.slf4j.LoggerFactory
+Caused by:    java.lang.ClassNotFoundException:   org.slf4j.LoggerFactory
         at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
         at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
         at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
         ... 1 more
 ```
 
-Observamos que incluso luego de agregar dependencias en ```pom.xml``` no se encuentra una clase para importar (```java.lang.ClassNotFoundException: org.slf4j.LoggerFactory```). Como no obtenemos la dependencia en tiempo de ejecucion, es necesario entonces especificar el acceso a los archivos ```.jar``` necesarios.
+Observamos que incluso luego de agregar dependencias en ```pom.xml``` no se encuentra una clase para importar (```java.lang.ClassNotFoundException:     org.slf4j.LoggerFactory```). Como no obtenemos la dependencia en tiempo de ejecucion, es necesario entonces especificar el acceso a los archivos ```.jar``` necesarios.
 
 Implementamos entonces la siguiente solucion
 
@@ -246,23 +246,23 @@ Analizando **npm**, vemos que consiste de:
 
 Este gran centro de paquetes esta disponible en https://npmjs.com 
 
-Dentro de los archivos base, encontramos ```package.json```: indica a npm que el directorio en el que se encuentra es un proyecto npm y contiene la información del paquete incluyendo la descripción del mismo, versión, autor y más importante aún dependencias.
+Dentro de los archivos base, encontramos ```package.json```:    indica a npm que el directorio en el que se encuentra es un proyecto npm y contiene la información del paquete incluyendo la descripción del mismo, versión, autor y más importante aún dependencias.
 
 ```
 {
-  "name": "hola-mundo",
-  "version": "0.0.0",
-  "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
+  "name":     "hola-mundo",
+  "version":    "0.0.0",
+  "private":    true,
+  "scripts":    {
+    "start":    "node ./bin/www"
   },
-  "dependencies": {
-    "cookie-parser": "~1.4.4",
-    "debug": "~2.6.9",
-    "ejs": "~2.6.1",
-    "express": "~4.16.1",
-    "http-errors": "~1.6.3",
-    "morgan": "~1.9.1"
+  "dependencies":     {
+    "cookie-parser":    "~1.4.4",
+    "debug":    "~2.6.9",
+    "ejs":    "~2.6.1",
+    "express":    "~4.16.1",
+    "http-errors":    "~1.6.3",
+    "morgan":     "~1.9.1"
   }
 }
 
@@ -270,3 +270,35 @@ Dentro de los archivos base, encontramos ```package.json```: indica a npm que el
 
 
 ### Ejemplo con python
+
+Instalamos las dependencias y ejecutamos lo necesario
+
+```
+juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5$ python3 -m pip install --user cookiecutter
+
+juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5/test$ make run
+
+```
+
+Funciona!
+
+![](screenshots/tp5-04.png)
+
+- ```pip``` es un sistema de gestión de paquetes utilizado para instalar y administrar paquetes de software escritos en Python. (similar a npm). Permite instalar paquetes de software de Python fácilmente desde solo una orden. Obtiene los paquetes de https://pypi.org/ 
+- ```cookiecutter``` es una utilidad de command-line que crea proyectos a partir de una plantilla (plantillas de proyectos), por ejemplo, crear un proyecto de paquete de Python a partir de una plantilla de proyecto de paquete de Python. Estas plantillas contienen todo lo necesario para comenzar con el proyecto que elijamos.
+- ```make``` se utiliza normalmente para construir programas y bibliotecas ejecutables a partir del código fuente. En general, make es aplicable a cualquier proceso que implique la ejecución de comandos arbitrarios para transformar un archivo fuente en un resultado objetivo.
+
+
+### Build tools de otros lenguajes
+
+JavaScript:   ESbuild
+C++:          Meson - Make
+C:            Embarcadero
+C#:           C# Make - MSBuild - MSTest
+Java:         Maven - Gradle - Ant
+PHP:          Ivy - Phing
+Swift:        Swift Package Manager
+Go:           Make
+Ruby:         Capistrano
+Perl:         perlbrew
+
