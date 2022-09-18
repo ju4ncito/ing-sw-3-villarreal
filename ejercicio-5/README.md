@@ -147,3 +147,58 @@ Por lo tanto, debemos agregar la dependencia necesaria
       <version>1.2.1</version>
     </dependency>
 ```
+
+Volvemos a ejecutar nuestro jar, pero obtenemos lo siguiente
+
+```
+juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5/MAVEN/maven-dependencias/ejemplo-uber-jar$ java -cp target/ejemplo-uber-jar-1.0-SNAPSHOT.jar ar.edu.ucc.App
+Exception in thread "main" java.lang.NoClassDefFoundError: org/slf4j/LoggerFactory
+        at ar.edu.ucc.App.main(App.java:14)
+Caused by: java.lang.ClassNotFoundException: org.slf4j.LoggerFactory
+        at java.base/jdk.internal.loader.BuiltinClassLoader.loadClass(BuiltinClassLoader.java:581)
+        at java.base/jdk.internal.loader.ClassLoaders$AppClassLoader.loadClass(ClassLoaders.java:178)
+        at java.base/java.lang.ClassLoader.loadClass(ClassLoader.java:522)
+        ... 1 more
+```
+
+Observamos que incluso luego de agregar dependencias en ```pom.xml``` no se encuentra una clase para importar (```java.lang.ClassNotFoundException: org.slf4j.LoggerFactory```). Como no obtenemos la dependencia en tiempo de ejecucion, es necesario entonces especificar el acceso a los archivos ```.jar``` necesarios.
+
+Implementamos entonces la siguiente solucion
+
+```
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.0</version>
+        <executions>
+          <execution>
+            <phase>package</phase>
+            <goals>
+              <goal>shade</goal>
+            </goals>
+            <configuration>
+              <finalName>${project.artifactId}</finalName>
+              <transformers>
+                <transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
+                  <mainClass>ar.edu.ucc.App</mainClass>
+                </transformer>
+              </transformers>
+              <minimizeJar>false</minimizeJar>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+    </plugins>
+  </build>
+```
+
+Obtenemos como salida
+
+```
+juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5/MAVEN/maven-dependencias/ejemplo-uber-jar$ java -jar target/ejemplo-uber-jar.jar
+16:48:12.779 [main] INFO ar.edu.ucc.App - Hola Mundo!
+```
+
+### Utilizar un IDE
