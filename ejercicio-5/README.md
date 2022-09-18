@@ -202,3 +202,68 @@ juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5/MAVEN/maven-dependencias/ejem
 ```
 
 ### Utilizar un IDE
+
+Importamos el proyecto en Eclipse
+
+![](screenshots/tp5-02.png)
+
+Corremos la app
+
+```
+17:49:10.428 [main] INFO ar.edu.ucc.App - Hola Mundo!
+```
+Testings
+
+![](screenshots/tp5-01.png)
+
+Configuracion de MAVEN
+
+![](screenshots/tp5-03.png)
+
+
+### Utilizando node-js
+
+Instalamos el componente necesario para generar aplicaciones, creamos y ejecutamos la misma
+
+```
+npm install express-generator -g
+
+juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5/hola-mundo$ npm start
+
+> hola-mundo@0.0.0 start
+> node ./bin/www
+
+GET / 200 19.043 ms - 207
+GET /stylesheets/style.css 200 6.540 ms - 111
+
+
+```
+
+Analizando **npm**, vemos que consiste de:
+
+- Un repositorio online para publicar paquetes de software libre para ser utilizados en proyectos Node.js
+- Una herramienta para la terminal (command line utility) para interactuar con dicho repositorio que te ayuda a la instalación de utilidades, manejo de dependencias y la publicación de paquetes
+
+Este gran centro de paquetes esta disponible en https://npmjs.com 
+
+Dentro de los archivos base, encontramos ```package.json```: indica a npm que el directorio en el que se encuentra es un proyecto npm y contiene la información del paquete incluyendo la descripción del mismo, versión, autor y más importante aún dependencias.
+
+```
+{
+  "name": "hola-mundo",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "cookie-parser": "~1.4.4",
+    "debug": "~2.6.9",
+    "ejs": "~2.6.1",
+    "express": "~4.16.1",
+    "http-errors": "~1.6.3",
+    "morgan": "~1.9.1"
+  }
+}
+
+```
