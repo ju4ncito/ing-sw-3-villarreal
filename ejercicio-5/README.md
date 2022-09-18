@@ -267,3 +267,6 @@ Dentro de los archivos base, encontramos ```package.json```: indica a npm que el
 }
 
 ```
+
+
+### Ejemplo con python
