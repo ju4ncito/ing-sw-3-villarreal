@@ -7,7 +7,7 @@ Juan Manuel Villarreal
 
 ## Indice
 
-[TP-1 - Git Básico](/ejercicio-1)
+[TP-1 - Git Basico](/ejercicio-1)
 
 [TP-2 - Introduccion a Docker](/ejercicio-2)
 
@@ -17,3 +17,4 @@ Juan Manuel Villarreal
 
 [TP-5 - Herramientas de construccion de SW](/ejercicio-5)
 
+[TP-6 - Construccion de Imagenes de Docker](/ejercicio-6)
