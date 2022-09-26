@@ -223,21 +223,29 @@ Configuracion de MAVEN
 
 ### Utilizando node-js
 
-Instalamos el componente necesario para generar aplicaciones, creamos y ejecutamos la misma
+Instalamos node-js y creamos una nueva aplicacion
 
 ```
-npm install express-generator -g
+npx create-react-app my-app
+```
 
-juan@juannet:~/ucc/ing-sw-3-villarreal/ejercicio-5/hola-mundo$ npm start
-
-> hola-mundo@0.0.0 start
-> node ./bin/www
-
-GET / 200 19.043 ms - 207
-GET /stylesheets/style.css 200 6.540 ms - 111
-
+obtenemos
 
 ```
+Compiled successfully!
+
+You can now view my-app in the browser.
+
+  http://localhost:3000
+
+Note that the development build is not optimized.
+To create a production build, use npm run build.
+
+webpack compiled successfully
+
+```
+
+![](screenshots/tp5-node.png)
 
 Analizando **npm**, vemos que consiste de:
 
@@ -247,26 +255,6 @@ Analizando **npm**, vemos que consiste de:
 Este gran centro de paquetes esta disponible en https://npmjs.com 
 
 Dentro de los archivos base, encontramos ```package.json```:    indica a npm que el directorio en el que se encuentra es un proyecto npm y contiene la información del paquete incluyendo la descripción del mismo, versión, autor y más importante aún dependencias.
-
-```
-{
-  "name":     "hola-mundo",
-  "version":    "0.0.0",
-  "private":    true,
-  "scripts":    {
-    "start":    "node ./bin/www"
-  },
-  "dependencies":     {
-    "cookie-parser":    "~1.4.4",
-    "debug":    "~2.6.9",
-    "ejs":    "~2.6.1",
-    "express":    "~4.16.1",
-    "http-errors":    "~1.6.3",
-    "morgan":     "~1.9.1"
-  }
-}
-
-```
 
 
 ### Ejemplo con python
