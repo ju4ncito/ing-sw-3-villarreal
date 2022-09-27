@@ -93,4 +93,109 @@ Analizando los logs de *build* podemos ver el paso a paso
 
 ## Utilizar nuestros proyectos
 
- java -jar jenkins.war --httpPort=8081
+Creamos un repositorio con nuestro *spring-boot* del tp 6: https://github.com/ju4ncito/springboot-tp7
+
+
+Modificamos el pipeline utilizado en git + maven para que utilice nuestro repositorio:
+```
+pipeline {
+    agent any
+
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git branch: "main", url: 'https://github.com/ju4ncito/springboot-tp7'
+
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                // To run Maven on a Windows agent, use
+                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+    }
+}
+```
+
+y obtenemos
+
+
+![](screenshots/jenkins-8.png)
+
+![](screenshots/jenkins-9.png)
+
+## Utilizar proyectos con Docker
+
+Creamos nuestras credenciales para dockerhub en Jenkins, bajo el nombre de *docker-credentials*. Creamos un nuevo pipeline llamado jenkins-docker, con el siguiente script:
+
+```
+pipeline {
+    agent any
+    
+    tools {
+        // Install the Maven version configured as "M3" and add it to the path.
+        maven "M3"
+    }
+
+    stages {
+        stage('Build') {
+            steps {
+                // Get some code from a GitHub repository
+                git branch: "main", url: 'https://github.com/ju4ncito/springboot-tp7'
+
+
+                // Run Maven on a Unix agent.
+                sh "mvn -Dmaven.test.failure.ignore=true clean package"
+
+                // To run Maven on a Windows agent, use
+                // bat "mvn -Dmaven.test.failure.ignore=true clean package"
+            }
+
+            post {
+                // If Maven was able to run the tests, even if some of the test
+                // failed, record the test results and archive the jar file.
+                success {
+                    junit '**/target/surefire-reports/TEST-*.xml'
+                    archiveArtifacts 'target/*.jar'
+                }
+            }
+        }
+        
+        stage('Docker Process') {
+            steps{
+                script{
+                    def image = docker.build "0xsn4ke/jenkins-docer"
+                    docker.withRegistry('https://registry.hub.docker.com', 'docker-credential') {
+                        image.push("${env.BUILD_NUMBER}")
+                        image.push("latest")
+                    }
+                }
+            }
+        }
+    }
+}
+```
+
+Corremos la build y obtenemos
+
+![](screenshots/jenkins10.png)
+
+Como nuestra build se construyo, podemos ver nuestra imagen en Dockerhub
+
+![](screenshots/jenkinsdocker.png)
+
