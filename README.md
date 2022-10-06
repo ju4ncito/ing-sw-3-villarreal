@@ -18,3 +18,7 @@ Juan Manuel Villarreal
 [TP-5 - Herramientas de construccion de SW](/ejercicio-5)
 
 [TP-6 - Construccion de Imagenes de Docker](/ejercicio-6)
+
+[TP-7 - Servidor de Build (de integración continua)](/ejercicio-7)
+
+[TP-8 - Herramientas de construcción de software en la nube](/ejercicio-8)
