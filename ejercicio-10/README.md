@@ -164,3 +164,27 @@ La salida en `./output/results.xml` es la siguiente
 ```
 
 ### Integrar la ejecucion en Jenkins
+
+Configuramos el siguiente script de pipeline en 'Jenkins'
+
+```
+node {
+    stage('Build'){
+        dir("/home/juan/ucc/springboot-tp10/"){
+            sh 'npx codeceptjs run --steps --reporter mocha-multi'
+        }
+    }
+
+    stage('Results'){
+        dir("/home/juan/ucc/springboot-tp10/output"){
+            junit 'result.xml'
+        }
+    }
+}
+```
+
+Y construye exitosamente
+
+![](screenshots/tp10-2.png)
+
+![](screenshots/tp10-3.png)
