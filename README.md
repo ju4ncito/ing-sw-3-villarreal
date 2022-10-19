@@ -24,3 +24,5 @@ Juan Manuel Villarreal
 [TP-8 - Herramientas de construcción de software en la nube](/ejercicio-8)
 
 [TP-9 - Pruebas de unidad](/ejercicio-9)
+
+[TP-10 - Pruebas de integracion](/ejercicio-10)
