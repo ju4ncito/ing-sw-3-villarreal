@@ -26,3 +26,5 @@ Juan Manuel Villarreal
 [TP-9 - Pruebas de unidad](/ejercicio-9)
 
 [TP-10 - Pruebas de integracion](/ejercicio-10)
+
+[TP-12 - Despliegue de aplicaciones](/ejercicio-12)
